@@ -1,0 +1,17 @@
+deleteCozinha:
+  handler: src/modules/deleteCozinha/index.deleteCozinha
+  events:
+    - http:
+        path: deleteCozinha/{id}
+        method: delete
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/deleteCozinha/**
+      - node_modules/**

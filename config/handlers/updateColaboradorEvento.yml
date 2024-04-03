@@ -1,0 +1,17 @@
+updateColaboradorEvento:
+  handler: src/modules/updateColaboradorEvento/index.updateColaboradorEvento
+  events:
+    - http:
+        path: colaboradorEvento/{id}
+        method: patch
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/updateColaboradorEvento/**
+      - node_modules/**

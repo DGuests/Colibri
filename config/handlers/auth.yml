@@ -1,0 +1,12 @@
+auth:
+  handler: src/modules/auth/index.auth
+  vpc: ~
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/auth/**
+      - node_modules/**

@@ -1,0 +1,17 @@
+insertOpenTables:
+  handler: src/modules/insertOpenTables/index.insertOpenTables
+  events:
+    - http:
+        path: insertOpenTables
+        method: post
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/insertOpenTables/**
+      - node_modules/**

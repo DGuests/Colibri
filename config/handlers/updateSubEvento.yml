@@ -1,0 +1,17 @@
+updateSubEvento:
+  handler: src/modules/updateSubEvento/index.updateSubEvento
+  events:
+    - http:
+        path: updateSubEvento
+        method: patch
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/updateSubEvento/**
+      - node_modules/**

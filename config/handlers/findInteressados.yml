@@ -1,0 +1,13 @@
+findInteressados:
+  handler: src/modules/findInteressados/index.findInteressados
+  events:
+    - http:
+        path: findInteressados
+        method: get
+        cors: true
+  package:
+    individually: true
+    patterns:
+      - "!src/modules/**"
+      - src/modules/findInteressados/**
+      - node_modules/**

@@ -1,0 +1,17 @@
+findAllBlacklist:
+  handler: src/modules/findAllBlacklist/index.findAllBlacklist
+  events:
+    - http:
+        path: findAllBlacklist
+        method: get
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/findAllBlacklist/**
+      - node_modules/**

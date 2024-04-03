@@ -1,0 +1,17 @@
+insertLista:
+  handler: src/modules/insertLista/index.insertLista
+  events:
+    - http:
+        path: insertLista
+        method: post
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/insertLista/**
+      - node_modules/**

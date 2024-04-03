@@ -1,0 +1,17 @@
+getConvidadosColab:
+  handler: src/modules/getConvidadosColab/index.getConvidadosColab
+  events:
+    - http:
+        path: getConvidadosColab/{idEvento}
+        method: get
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/getConvidadosColab/**
+      - node_modules/**

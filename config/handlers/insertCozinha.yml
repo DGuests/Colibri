@@ -1,0 +1,17 @@
+insertCozinha:
+  handler: src/modules/insertCozinha/index.insertCozinha
+  events:
+    - http:
+        path: insertCozinha
+        method: post
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/insertCozinha/**
+      - node_modules/**

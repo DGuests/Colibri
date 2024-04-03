@@ -1,0 +1,16 @@
+getTextBlogId:
+  handler: src/modules/getTextBlogId/index.getTextBlogId
+  events:
+    - http:
+        path: getTextBlogId/{id}
+        method: get
+        cors: true
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/getTextBlogId/**
+      - node_modules/**

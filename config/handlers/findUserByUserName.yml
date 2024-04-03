@@ -1,0 +1,14 @@
+findUserByUserName:
+  handler: src/modules/findUserByUserName/index.findUserByUserName
+  events:
+    - http:
+        path: findUserByUserName/{slug}
+        method: get
+        cors: true
+        # authorizer: aws_iam
+  package:
+    individually: true
+    patterns:
+      - "!src/modules/**"
+      - src/modules/findUserByUserName/**
+      - node_modules/**

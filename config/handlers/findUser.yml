@@ -1,0 +1,14 @@
+findUser:
+  handler: src/modules/findUser/index.findUser
+  events:
+    - http:
+        path: getUser
+        method: get
+        cors: true
+        authorizer: aws_iam
+  package:
+    individually: true
+    patterns:
+      - "!src/modules/**"
+      - src/modules/findUser/**
+      - node_modules/**

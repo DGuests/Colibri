@@ -1,0 +1,4 @@
+{
+  "statusCode": 501,
+  "body": "{\r\n  \"code\": \"ExpiredCodeException\",\r\n  \"name\": \"ExpiredCodeException\",\r\n  \"message\": \"Invalid code provided, please request a code again.\"\r\n}"
+}

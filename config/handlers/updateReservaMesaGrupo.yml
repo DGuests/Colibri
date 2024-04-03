@@ -1,0 +1,17 @@
+updateReservaMesaGrupo:
+  handler: src/modules/updateReservaMesaGrupo/index.updateReservaMesaGrupo
+  events:
+    - http:
+        path: updateReservaMesaGrupo/{grupo}
+        method: patch
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/updateReservaMesaGrupo/**
+      - node_modules/**

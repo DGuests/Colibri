@@ -1,0 +1,17 @@
+deleteProduto:
+  handler: src/modules/deleteProduto/index.deleteProduto
+  events:
+    - http:
+        path: deleteProduto/{id}
+        method: delete
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/deleteProduto/**
+      - node_modules/**

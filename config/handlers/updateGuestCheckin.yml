@@ -1,0 +1,17 @@
+updateGuestCheckin:
+  handler: src/modules/updateGuestCheckin/index.updateGuestCheckin
+  events:
+    - http:
+        path: updateCheckin/{idEvento}
+        method: patch
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/updateGuestCheckin/**
+      - node_modules/**

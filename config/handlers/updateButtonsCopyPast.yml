@@ -1,0 +1,17 @@
+updateButtonsCopyPast:
+  handler: src/modules/updateButtonsCopyPast/index.updateButtonsCopyPast
+  events:
+    - http:
+        path: updateButtonsCopyPast/{id}
+        method: patch
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/updateButtonsCopyPast/**
+      - node_modules/**

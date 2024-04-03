@@ -1,0 +1,17 @@
+findUserColaboradorFixo:
+  handler: src/modules/findUserColaboradorFixo/index.getUser
+  events:
+    - http:
+        path: findAllUsers
+        method: get
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/findUserColaboradorFixo/**
+      - node_modules/**

@@ -1,0 +1,17 @@
+getEvento:
+  handler: src/modules/getEvento/index.getEvento
+  events:
+    - http:
+        path: getEvento/{id}
+        method: get
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/getEvento/**
+      - node_modules/**

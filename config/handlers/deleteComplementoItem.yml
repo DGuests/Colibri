@@ -1,0 +1,17 @@
+deleteComplementoItem:
+  handler: src/modules/deleteComplementoItem/index.deleteComplementoItem
+  events:
+    - http:
+        path: deleteComplementoItem/{id}
+        method: delete
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/deleteComplementoItem/**
+      - node_modules/**

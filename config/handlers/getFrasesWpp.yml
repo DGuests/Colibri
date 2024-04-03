@@ -1,0 +1,17 @@
+getFrasesWpp:
+  handler: src/modules/getFrasesWpp/index.getFrasesWpp
+  events:
+    - http:
+        path: frases
+        method: get
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/getFrasesWpp/**
+      - node_modules/**

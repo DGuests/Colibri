@@ -1,0 +1,16 @@
+  getUsoCardapio:
+    handler: src/modules/getUsoCardapio/index.getUsoCardapio
+    events:
+      - http:
+          path: getUsoCardapio/{slug}
+          method: get
+          cors: true
+    # layers:
+    #   - { Ref: NodeModulesLambdaLayer }
+    package:
+      individually: true
+
+      patterns:
+        - '!src/modules/**'
+        - src/modules/getUsoCardapio/**
+        - node_modules/**

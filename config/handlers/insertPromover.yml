@@ -1,0 +1,17 @@
+insertPromover:
+  handler: src/modules/insertPromover/index.insertPromover
+  events:
+    - http:
+        path: insertPromover
+        method: post
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/insertPromover/**
+      - node_modules/**

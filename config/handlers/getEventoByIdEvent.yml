@@ -1,0 +1,16 @@
+getEventoByIdEvent:
+  handler: src/modules/getEventoByIdEvent/index.getEventoByIdEvent
+  events:
+    - http:
+        path: getEventoByIdEvent/{id}
+        method: get
+        cors: true
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/getEventoByIdEvent/**
+      - node_modules/**

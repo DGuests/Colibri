@@ -1,0 +1,16 @@
+getReservaMaxMin:
+  handler: src/modules/getReservaMaxMin/index.getReservaMaxMin
+  events:
+    - http:
+        path: getReservaMaxMin/{idCenario}
+        method: get
+        cors: true
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/getReservaMaxMin/**
+      - node_modules/**

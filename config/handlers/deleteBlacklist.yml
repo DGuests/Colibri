@@ -1,0 +1,18 @@
+  deleteBlacklist:
+    handler: src/modules/deleteBlacklist/index.deleteBlacklist
+    events:
+      - http:
+          path: deleteBlacklist/{id}
+          method: delete
+          cors: true
+          authorizer: aws_iam
+
+    # layers:
+    #   - { Ref: NodeModulesLambdaLayer }
+    package:
+      individually: true
+
+      patterns:
+        - '!src/modules/**'
+        - src/modules/deleteBlacklist/**
+        - node_modules/**

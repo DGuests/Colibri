@@ -1,0 +1,17 @@
+deleteLinkPromover:
+  handler: src/modules/deleteLinkPromover/index.deleteLinkPromover
+  events:
+    - http:
+        path: deleteLinkPromover/{id}
+        method: delete
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/deleteLinkPromover/**
+      - node_modules/**

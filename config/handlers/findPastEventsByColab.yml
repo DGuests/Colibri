@@ -1,0 +1,17 @@
+findPastEventsByColab:
+  handler: src/modules/findPastEventsByColab/index.findPastEventsByColab
+  events:
+    - http:
+        path: findPastEventsByColab
+        method: get
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/findPastEventsByColab/**
+      - node_modules/**

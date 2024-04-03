@@ -1,0 +1,17 @@
+getNotificacoes:
+  handler: src/modules/getNotificacoes/index.getNotificacoes
+  events:
+    - http:
+        path: getNotificacoes
+        method: get
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/getNotificacoes/**
+      - node_modules/**

@@ -1,0 +1,25 @@
+{
+  "version": "1",
+  "region": "us-east-1",
+  "userPoolId": "us-east-1_0jXMc2YRK",
+  "userName": "6928ed46-2763-4a27-b03f-7a51fde8d8dd",
+  "callerContext": {
+      "awsSdkVersion": "aws-sdk-unknown-unknown",
+      "clientId": "52sslg7tq9hag5p9mc52k5oo6o"
+  },
+  "triggerSource": "PostConfirmation_ConfirmSignUp",
+  "request": {
+      "userAttributes": {
+          "custom:surname": "dos Santos",
+          "sub": "6928ed46-2763-4a27-b03f-7a51fde8d8dd",
+          "cognito:email_alias": "gadiel_kalleb@hotmail.com",
+          "cognito:user_status": "CONFIRMED",
+          "email_verified": "false",
+          "name": "Gadiel Kalleb",
+          "phone_number_verified": "true",
+          "phone_number": "+5511981944516",
+          "email": "gadiel_kalleb@hotmail.com"
+      }
+  },
+  "response": {}
+}

@@ -1,0 +1,17 @@
+deleteLogo:
+  handler: src/modules/deleteLogo/index.deleteLogo
+  events:
+    - http:
+        path: deleteLogo/{id}
+        method: delete
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/deleteLogo/**
+      - node_modules/**

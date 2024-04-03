@@ -1,0 +1,17 @@
+updateNotificacoes:
+  handler: src/modules/updateNotificacoes/index.updateNotificacoes
+  events:
+    - http:
+        path: updateNotificacoes
+        method: patch
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/updateNotificacoes/**
+      - node_modules/**

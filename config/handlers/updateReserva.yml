@@ -1,0 +1,16 @@
+updateReserva:
+  handler: src/modules/updateReserva/index.updateReserva
+  events:
+    - http:
+        path: updateReserva/{id}
+        method: patch
+        cors: true
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/updateReserva/**
+      - node_modules/**

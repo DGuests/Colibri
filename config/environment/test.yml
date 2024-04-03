@@ -1,0 +1,10 @@
+DB_DBNAME: dguestsdb
+DB_USERNAME: dguestsdb
+DB_PASSWORD: 2*aS!229Ddadd
+DB_HOST: dbtest.chii0z3fxm6i.us-west-2.rds.amazonaws.com
+DB_PORT: 3306
+USER_POOL_ID: "us-west-2_R7XDNmkT4"
+CLIENT_ID: "3mm6d66kt6fmmjft016rk2f6ds"
+REGION_POOL: ${opt:region, 'us-west-2'}
+AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
+IMAGE_UPLOAD_BUCKET: dg-media-oficial

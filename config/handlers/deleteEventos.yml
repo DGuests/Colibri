@@ -1,0 +1,17 @@
+deleteEventos:
+  handler: src/modules/deleteEventos/index.deleteEventos
+  events:
+    - http:
+        path: deleteEventos/{id}
+        method: delete
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/deleteEventos/**
+      - node_modules/**

@@ -1,0 +1,17 @@
+uploadImageEventos:
+  handler: src/modules/uploadImageEventos/index.uploadImageEventos
+  events:
+    - http:
+        path: uploadImageEventos/{id}
+        method: post
+        cors: true
+        authorizer: auth
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/uploadImageEventos/**
+      - node_modules/**

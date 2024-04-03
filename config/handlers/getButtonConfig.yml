@@ -1,0 +1,17 @@
+getButtonConfig:
+  handler: src/modules/getButtonConfig/index.getButtonConfig
+  events:
+    - http:
+        path: getButtonConfig
+        method: get
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/getButtonConfig/**
+      - node_modules/**

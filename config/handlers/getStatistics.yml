@@ -1,0 +1,17 @@
+getStatistics:
+  handler: src/modules/getStatistics/index.getStatistics
+  events:
+    - http:
+        path: getStatistics
+        method: get
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/getStatistics/**
+      - node_modules/**

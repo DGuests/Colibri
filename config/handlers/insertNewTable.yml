@@ -1,0 +1,17 @@
+insertNewTable:
+  handler: src/modules/insertNewTable/index.insertNewTable
+  events:
+    - http:
+        path: insertNewTable
+        method: post
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/insertNewTable/**
+      - node_modules/**

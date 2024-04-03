@@ -1,0 +1,17 @@
+createPostButtonsCopyPast:
+  handler: src/modules/createPostButtonsCopyPast/index.createPostButtonsCopyPast
+  events:
+    - http:
+        path: createPostButtonsCopyPast
+        method: post
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/createPostButtonsCopyPast/**
+      - node_modules/**

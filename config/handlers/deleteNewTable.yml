@@ -1,0 +1,17 @@
+deleteNewTable:
+  handler: src/modules/deleteNewTable/index.deleteNewTable
+  events:
+    - http:
+        path: deleteNewTable/{id}
+        method: delete
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/deleteNewTable/**
+      - node_modules/**

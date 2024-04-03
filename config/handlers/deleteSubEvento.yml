@@ -1,0 +1,17 @@
+deleteSubEvento:
+  handler: src/modules/deleteSubEvento/index.deleteSubEvento
+  events:
+    - http:
+        path: deleteSubEvento/{id}
+        method: delete
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/deleteSubEvento/**
+      - node_modules/**

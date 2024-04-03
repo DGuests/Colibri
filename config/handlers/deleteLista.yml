@@ -1,0 +1,17 @@
+deleteLista:
+  handler: src/modules/deleteLista/index.deleteLista
+  events:
+    - http:
+        path: deleteLista/{id}
+        method: delete
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/deleteLista/**
+      - node_modules/**

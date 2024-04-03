@@ -1,0 +1,17 @@
+getAniversariosForm:
+  handler: src/modules/getAniversariosForm/index.getAniversariosForm
+  events:
+    - http:
+        path: getAniversariosForm
+        method: get
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/getAniversariosForm/**
+      - node_modules/**

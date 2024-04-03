@@ -1,0 +1,16 @@
+getGirosReserva:
+  handler: src/modules/getGirosReserva/index.getGirosReserva
+  events:
+    - http:
+        path: getGirosReserva
+        method: get
+        cors: true
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/getGirosReserva/**
+      - node_modules/**

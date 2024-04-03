@@ -1,0 +1,17 @@
+getColaboradorFixo:
+  handler: src/modules/getColaboradorFixo/index.getColaboradorFixo
+  events:
+    - http:
+        path: getColaboradorFixo
+        method: get
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/getColaboradorFixo/**
+      - node_modules/**

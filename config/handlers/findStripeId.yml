@@ -1,0 +1,17 @@
+findStripeId:
+  handler: src/modules/findStripeId/index.findStripeId
+  events:
+    - http:
+        path: findStripeId
+        method: get
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/findStripeId/**
+      - node_modules/**

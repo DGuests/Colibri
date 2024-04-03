@@ -1,0 +1,17 @@
+getHistoryPedidos:
+  handler: src/modules/getHistoryPedidos/index.getHistoryPedidos
+  events:
+    - http:
+        path: getHistoryPedidos
+        method: get
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/getHistoryPedidos/**
+      - node_modules/**

@@ -1,0 +1,17 @@
+insertCategoriaGrupo:
+  handler: src/modules/insertCategoriaGrupo/index.insertCategoriaGrupo
+  events:
+    - http:
+        path: insertCategoriaGrupo
+        method: post
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/insertCategoriaGrupo/**
+      - node_modules/**

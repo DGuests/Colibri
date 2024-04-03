@@ -1,0 +1,17 @@
+getPainelResultados:
+  handler: src/modules/getPainelResultados/index.getPainelResultados
+  events:
+    - http:
+        path: getPainelResultados
+        method: get
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/getPainelResultados/**
+      - node_modules/**

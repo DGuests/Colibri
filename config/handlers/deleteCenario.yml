@@ -1,0 +1,17 @@
+deleteCenario:
+  handler: src/modules/deleteCenario/index.deleteCenario
+  events:
+    - http:
+        path: deleteCenario/{id}
+        method: delete
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/deleteCenario/**
+      - node_modules/**

@@ -1,0 +1,17 @@
+updateCardapioButtonAvaliacao:
+  handler: src/modules/updateCardapioButtonAvaliacao/index.updateCardapioButtonAvaliacao
+  events:
+    - http:
+        path: updateCardapioButtonAvaliacao
+        method: patch
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/updateCardapioButtonAvaliacao/**
+      - node_modules/**

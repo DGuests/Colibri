@@ -1,0 +1,17 @@
+insertProduto:
+  handler: src/modules/insertProduto/index.insertProduto
+  events:
+    - http:
+        path: insertProduto
+        method: post
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/insertProduto/**
+      - node_modules/**

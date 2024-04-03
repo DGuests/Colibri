@@ -1,0 +1,17 @@
+updateCategoriaGrupo:
+  handler: src/modules/updateCategoriaGrupo/index.updateCategoriaGrupo
+  events:
+    - http:
+        path: updateCategoriaGrupo/{id}
+        method: patch
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/updateCategoriaGrupo/**
+      - node_modules/**

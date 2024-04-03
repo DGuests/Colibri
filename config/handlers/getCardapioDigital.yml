@@ -1,0 +1,17 @@
+getCardapioDigital:
+  handler: src/modules/getCardapioDigital/index.getCardapioDigital
+  events:
+    - http:
+        path: getCardapioDigital
+        method: get
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/getCardapioDigital/**
+      - node_modules/**

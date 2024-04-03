@@ -1,0 +1,17 @@
+findPhoneUser:
+  handler: src/modules/findPhoneUser/index.findPhoneUser
+  events:
+    - http:
+        path: findPhoneUser/{phone}
+        method: get
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/findPhoneUser/**
+      - node_modules/**

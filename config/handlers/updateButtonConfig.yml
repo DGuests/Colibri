@@ -1,0 +1,17 @@
+updateButtonConfig:
+  handler: src/modules/updateButtonConfig/index.updateButtonConfig
+  events:
+    - http:
+        path: updateButtonConfig
+        method: patch
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/updateButtonConfig/**
+      - node_modules/**

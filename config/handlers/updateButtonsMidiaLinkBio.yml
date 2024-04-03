@@ -1,0 +1,17 @@
+updateButtonsMidiaLinkBio:
+  handler: src/modules/updateButtonsMidiaLinkBio/index.updateButtonsMidiaLinkBio
+  events:
+    - http:
+        path: updateButtonsMidiaLinkBio
+        method: patch
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/updateButtonsMidiaLinkBio/**
+      - node_modules/**

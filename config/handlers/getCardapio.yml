@@ -1,0 +1,18 @@
+getCardapio:
+  handler: src/modules/getCardapio/index.getCardapio
+  events:
+    - http:
+        path: getCardapio
+        method: get
+        cors: true
+        authorizer: aws_iam
+
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/getCardapio/**
+      - node_modules/**

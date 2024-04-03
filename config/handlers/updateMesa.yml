@@ -1,0 +1,17 @@
+updateMesa:
+  handler: src/modules/updateMesa/index.updateMesa
+  events:
+    - http:
+        path: updateMesa
+        method: patch
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/updateMesa/**
+      - node_modules/**

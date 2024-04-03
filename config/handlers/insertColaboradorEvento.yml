@@ -1,0 +1,17 @@
+insertColaboradorEvento:
+  handler: src/modules/insertColaboradorEvento/index.insertColaboradorEvento
+  events:
+    - http:
+        path: colaboradorEvento
+        method: post
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/insertColaboradorEvento/**
+      - node_modules/**

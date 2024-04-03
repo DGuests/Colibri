@@ -1,0 +1,17 @@
+updateProduto:
+  handler: src/modules/updateProduto/index.updateProduto
+  events:
+    - http:
+        path: updateProduto/{id}
+        method: patch
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/updateProduto/**
+      - node_modules/**

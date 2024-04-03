@@ -1,0 +1,17 @@
+userImageUploadTest:
+  handler: src/modules/userImageUploadTest/index.userImageUploadTest
+  events:
+    - http:
+        path: userImageUploadTest/{id}
+        method: post
+        cors: true
+        authorizer: auth
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/userImageUploadTest/**
+      - node_modules/**

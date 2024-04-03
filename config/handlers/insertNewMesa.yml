@@ -1,0 +1,17 @@
+insertNewMesa:
+  handler: src/modules/insertNewMesa/index.insertNewMesa
+  events:
+    - http:
+        path: insertNewMesa
+        method: post
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/insertNewMesa/**
+      - node_modules/**

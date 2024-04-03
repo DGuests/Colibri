@@ -1,0 +1,17 @@
+deleteButtonsCopyPast:
+  handler: src/modules/deleteButtonsCopyPast/index.deleteButtonsCopyPast
+  events:
+    - http:
+        path: deleteButtonsCopyPast/{id}
+        method: delete
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/deleteButtonsCopyPast/**
+      - node_modules/**

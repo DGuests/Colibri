@@ -1,0 +1,17 @@
+getListaTiposEvento:
+  handler: src/modules/getListaTiposEvento/index.getListaTiposEvento
+  events:
+    - http:
+        path: getListaTiposEvento/{idEvento}
+        method: get
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/getListaTiposEvento/**
+      - node_modules/**

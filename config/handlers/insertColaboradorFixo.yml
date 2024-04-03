@@ -1,0 +1,17 @@
+insertColaboradorFixo:
+  handler: src/modules/insertColaboradorFixo/index.insertColaboradorFixo
+  events:
+    - http:
+        path: insertColaboradorFixo
+        method: post
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/insertColaboradorFixo/**
+      - node_modules/**

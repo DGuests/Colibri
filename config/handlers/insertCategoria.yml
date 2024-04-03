@@ -1,0 +1,17 @@
+insertCategoria:
+  handler: src/modules/insertCategoria/index.insertCategoria
+  events:
+    - http:
+        path: insertCategoria
+        method: post
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/insertCategoria/**
+      - node_modules/**

@@ -1,0 +1,17 @@
+getButtonsMidiaLinkBio:
+  handler: src/modules/getButtonsMidiaLinkBio/index.getButtonsMidiaLinkBio
+  events:
+    - http:
+        path: getButtonsMidiaLinkBio
+        method: get
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/testeButtonsMidia/**
+      - node_modules/**

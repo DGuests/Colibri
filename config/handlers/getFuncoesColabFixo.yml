@@ -1,0 +1,17 @@
+getFuncoesColabFixo:
+  handler: src/modules/getFuncoesColabFixo/index.getFuncoesColabFixo
+  events:
+    - http:
+        path: funcaoColaboradores
+        method: get
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/getFuncoesColabFixo/**
+      - node_modules/**

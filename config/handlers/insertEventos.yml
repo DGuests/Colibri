@@ -1,0 +1,17 @@
+insertEventos:
+  handler: src/modules/insertEventos/index.insertEventos
+  events:
+    - http:
+        path: insertEventos
+        method: post
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/insertEventos/**
+      - node_modules/**

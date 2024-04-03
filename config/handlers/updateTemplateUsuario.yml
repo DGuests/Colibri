@@ -1,0 +1,17 @@
+updateTemplateUsuario:
+  handler: src/modules/updateTemplateUsuario/index.updateTemplateUsuario
+  events:
+    - http:
+        path: updateTemplateUsuario/{id_template}
+        method: patch
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/updateTemplateUsuario/**
+      - node_modules/**

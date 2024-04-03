@@ -1,0 +1,17 @@
+updateStatusPedido:
+  handler: src/modules/updateStatusPedido/index.updateStatusPedido
+  events:
+    - http:
+        path: updateStatusPedido/{id_mesa}/{id}
+        method: patch
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/updateStatusPedido/**
+      - node_modules/**

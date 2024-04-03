@@ -1,0 +1,17 @@
+getSubEventos:
+  handler: src/modules/getSubEventos/index.getSubEventos
+  events:
+    - http:
+        path: getSubEventos/{idEvento}
+        method: get
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/getSubEventos/**
+      - node_modules/**

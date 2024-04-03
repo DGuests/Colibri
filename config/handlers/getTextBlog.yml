@@ -1,0 +1,16 @@
+getTextBlog:
+  handler: src/modules/getTextBlog/index.getTextBlog
+  events:
+    - http:
+        path: getTextBlog
+        method: get
+        cors: true
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/getTextBlog/**
+      - node_modules/**

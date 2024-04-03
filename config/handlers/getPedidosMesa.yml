@@ -1,0 +1,16 @@
+getPedidosMesa:
+  handler: src/modules/getPedidosMesa/index.getPedidosMesa
+  events:
+    - http:
+        path: getPedidosMesa/{hash}
+        method: get
+        cors: true
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/getPedidosMesa/**
+      - node_modules/**

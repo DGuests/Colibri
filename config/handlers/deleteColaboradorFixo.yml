@@ -1,0 +1,17 @@
+deleteColaboradorFixo:
+  handler: src/modules/deleteColaboradorFixo/index.deleteColaboradorFixo
+  events:
+    - http:
+        path: deleteColaboradorFixo/{id}
+        method: delete
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/deleteColaboradorFixo/**
+      - node_modules/**

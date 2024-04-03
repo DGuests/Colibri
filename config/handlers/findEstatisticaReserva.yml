@@ -1,0 +1,17 @@
+findEstatisticaReserva:
+  handler: src/modules/findEstatisticaReserva/index.findEstatisticaReserva
+  events:
+    - http:
+        path: findEstatisticaReserva
+        method: get
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/findEstatisticaReserva/**
+      - node_modules/**

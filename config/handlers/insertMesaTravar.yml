@@ -1,0 +1,17 @@
+insertMesaTravar:
+  handler: src/modules/insertMesaTravar/index.insertMesaTravar
+  events:
+    - http:
+        path: insertMesaTravar
+        method: post
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/insertMesaTravar/**
+      - node_modules/**

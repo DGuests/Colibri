@@ -1,0 +1,17 @@
+findPastEvents:
+  handler: src/modules/findPastEvents/index.findPastEvents
+  events:
+    - http:
+        path: findPastEvents
+        method: get
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/findPastEvents/**
+      - node_modules/**

@@ -1,0 +1,109 @@
+service: authorizer-service
+
+variablesResolutionMode: 20210326
+
+provider:
+  name: aws
+  versionFunctions: false
+  runtime: nodejs14.x
+  stage: ${opt:stage, 'local'}
+  # region: ${opt:region, 'us-east-1'}
+  region: ${opt:region, 'us-west-2'}
+  # architecture: arm64
+  apiGateway:
+    shouldStartNameWithService: true
+    binaryMediaTypes:
+      - "multipart/form-data"
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:*
+      Resource: "*"
+    - Effect: Allow
+      Action:
+        - lambda:InvokeFunction
+        - lambda:InvokeAsync
+      Resource: "*"
+
+  apiName: ${opt:stage, self:provider.stage, 'local'}
+  environment: ${file(./config/environment/${opt:stage, 'local'}.yml)}
+  lambdaHashingVersion: 20201221
+  vpc:
+    securityGroupIds:
+      - sg-0042855ca47a79230
+    subnetIds:
+      - subnet-dc769184
+      - subnet-00b96f76
+      - subnet-235ee347
+      - subnet-7b6d6f53
+  timeout: 10
+  # profile: groove-booster-dguests
+  deploymentBucket:
+    name: backend-dev-serverlessdeploymentbucket-xjnm55urtlcc
+    serverSideEncryption: AES256
+
+package:
+  individually: true
+  excludeDevDependencies: true
+  # exclude:
+  #   - "mocks/**"
+  #   - ".eslintrc.json"
+  #   - "yarn.lock"
+  #   - ".github/**"
+  #   - "package-lock.json"
+  #   - "README.md"
+  #   - ".editorconfig"
+  #   - "iac/**"
+  #   - "dumps/**"
+  #   - "Dockerfile"
+  #   - "docker-compose.yml"
+  #   - "serverless-dynamic.js"
+  #   - ".git/**"
+  #   - "config/**"
+  #   - workflows/**
+  #   - "jsconfig.json"
+  #   - src/modules/**
+
+  # patterns:
+  #   - "!node_modules/**"
+  #   - "package.json"
+
+  patterns:
+    - "!mocks/**"
+    - "!__tests__/**"
+    - "!.eslintrc.json"
+    - "!yarn.lock"
+    - "!pnpm-lock.yaml"
+    - "!node_modules/**"
+    - "!.github/**"
+    - "!package-lock.json"
+    - "!README.md"
+    - "!.editorconfig"
+    - "!iac/**"
+    - "!Dockerfile"
+    - "!docker-compose.yml"
+    - "!serverless-dynamic.js"
+    - "!.git/**"
+    - "!config/**"
+    - "jsconfig.json"
+    - "package.json"
+
+plugins:
+  # - serverless-offline
+  - serverless-plugin-split-stacks
+  - serverless-jetpack
+  - serverless-deployment-bucket
+
+functions: ${file(serverless-dynamic.js)}
+
+custom:
+  deploymentBucket:
+    versioning: true
+    accelerate: true
+  serverless-offline:
+    useChildProcesses: true
+  splitStacks:
+    nestedStackCount: 19
+    perFunction: false
+    perType: false
+    perGroupFunction: true

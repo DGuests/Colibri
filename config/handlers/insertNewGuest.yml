@@ -1,0 +1,17 @@
+insertNewGuest:
+  handler: src/modules/insertNewGuest/index.insertNewGuest
+  events:
+    - http:
+        path: insertNewGuest
+        method: post
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/insertNewGuest/**
+      - node_modules/**

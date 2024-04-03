@@ -1,0 +1,16 @@
+updateWaitListPosition:
+  handler: src/modules/updateWaitListPosition/index.updateWaitListPosition
+  events:
+    - http:
+        path: updateWaitListPosition/{id}
+        method: patch
+        cors: true
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/updateWaitListPosition/**
+      - node_modules/**

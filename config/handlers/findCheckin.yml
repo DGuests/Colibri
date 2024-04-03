@@ -1,0 +1,17 @@
+findCheckin:
+  handler: src/modules/findCheckin/index.findCheckin
+  events:
+    - http:
+        path: findCheckin/{idEvento}
+        method: get
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/findCheckin/**
+      - node_modules/**

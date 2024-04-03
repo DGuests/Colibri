@@ -1,0 +1,17 @@
+getAvaliacoes:
+  handler: src/modules/getAvaliacoes/index.getAvaliacoes
+  events:
+    - http:
+        path: getAvaliacoes
+        method: get
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/getAvaliacoes/**
+      - node_modules/**

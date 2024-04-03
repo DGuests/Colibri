@@ -1,0 +1,17 @@
+insertPosVenda:
+  handler: src/modules/insertPosVenda/index.insertPosVenda
+  events:
+    - http:
+        path: posvenda
+        method: post
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/insertPosVenda/**
+      - node_modules/**

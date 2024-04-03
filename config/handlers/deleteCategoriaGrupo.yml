@@ -1,0 +1,17 @@
+deleteCategoriaGrupo:
+  handler: src/modules/deleteCategoriaGrupo/index.deleteCategoriaGrupo
+  events:
+    - http:
+        path: deleteCategoriaGrupo/{id}
+        method: delete
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/deleteCategoriaGrupo/**
+      - node_modules/**

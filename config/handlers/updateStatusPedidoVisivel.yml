@@ -1,0 +1,17 @@
+updateStatusPedidoVisivel:
+  handler: src/modules/updateStatusPedidoVisivel/index.updateStatusPedidoVisivel
+  events:
+    - http:
+        path: updateStatusPedidoVisivel
+        method: patch
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/updateStatusPedidoVisivel/**
+      - node_modules/**

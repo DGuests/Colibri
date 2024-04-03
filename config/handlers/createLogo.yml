@@ -1,0 +1,17 @@
+createLogo:
+  handler: src/modules/createLogo/index.createLogo
+  events:
+    - http:
+        path: createLogo
+        method: post
+        cors: true
+        authorizer: auth
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/createLogo/**
+      - node_modules/**

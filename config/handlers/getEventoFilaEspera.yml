@@ -1,0 +1,16 @@
+getEventoFilaEspera:
+  handler: src/modules/getEventoFilaEspera/index.getEventoFilaEspera
+  events:
+    - http:
+        path: getEventoFilaEspera/{id}
+        method: get
+        cors: true
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/getEventoFilaEspera/**
+      - node_modules/**

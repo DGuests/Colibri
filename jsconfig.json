@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    "rootDirs": [
+      "src"
+    ],
+    "paths": {
+      "@src/*": [
+        "./*"
+      ]
+    },
+    "checkJs": true
+  },
+  "exclude": ["node_modules", "**/node_modules/*"]
+}

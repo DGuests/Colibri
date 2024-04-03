@@ -1,0 +1,16 @@
+sendEmail:
+  handler: src/modules/sendEmail/index.sendEmail
+  events:
+    - http:
+        path: sendEmail
+        method: post
+        cors: true
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/sendEmail/**
+      - node_modules/**

@@ -1,0 +1,17 @@
+insertReservaMesaGrupo:
+  handler: src/modules/insertReservaMesaGrupo/index.insertReservaMesaGrupo
+  events:
+    - http:
+        path: insertReservaMesaGrupo
+        method: post
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/insertReservaMesaGrupo/**
+      - node_modules/**

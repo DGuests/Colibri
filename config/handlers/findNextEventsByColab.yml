@@ -1,0 +1,17 @@
+findNextEventsByColab:
+  handler: src/modules/findNextEventsByColab/index.findNextEventsByColab
+  events:
+    - http:
+        path: findNextEventsByColab
+        method: get
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/findNextEventsByColab/**
+      - node_modules/**

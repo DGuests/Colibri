@@ -1,0 +1,17 @@
+updateColaboradorFixo:
+  handler: src/modules/updateColaboradorFixo/index.updateColaboradorFixo
+  events:
+    - http:
+        path: updateColaboradorFixo/{id}
+        method: patch
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/updateColaboradorFixo/**
+      - node_modules/**

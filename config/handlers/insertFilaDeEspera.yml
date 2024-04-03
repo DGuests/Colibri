@@ -1,0 +1,17 @@
+insertFilaDeEspera:
+  handler: src/modules/insertFilaDeEspera/index.insertFilaDeEspera
+  events:
+    - http:
+        path: insertFilaDeEspera
+        method: post
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/insertFilaDeEspera/**
+      - node_modules/**

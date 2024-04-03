@@ -1,0 +1,17 @@
+deleteReservaMesaGrupo:
+  handler: src/modules/deleteReservaMesaGrupo/index.deleteReservaMesaGrupo
+  events:
+    - http:
+        path: deleteReservaMesaGrupo/{id}
+        method: delete
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/deleteReservaMesaGrupo/**
+      - node_modules/**

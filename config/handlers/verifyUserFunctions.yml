@@ -1,0 +1,17 @@
+verifyUserFunctions:
+  handler: src/modules/verifyUserFunctions/index.verifyUserFunctions
+  events:
+    - http:
+        path: verifyUserFunctions
+        method: get
+        cors: true
+        authorizer: aws_iam
+  # layers:
+  #   - { Ref: NodeModulesLambdaLayer }
+  package:
+    individually: true
+
+    patterns:
+      - "!src/modules/**"
+      - src/modules/verifyUserFunctions/**
+      - node_modules/**
